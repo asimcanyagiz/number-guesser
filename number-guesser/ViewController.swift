@@ -88,8 +88,10 @@ class ViewController: UIViewController {
     @IBAction func btnGuessClicked(_ sender: UIButton) {
         
         if isAnswerTrue == true || guessTry > maxTry {
+            
             btnReset.isHidden = false
             return
+            
         }
         txtGuess.backgroundColor = UIColor.white
         
@@ -100,7 +102,7 @@ class ViewController: UIViewController {
                 imgGuess.image = UIImage(named: "star")
                 lblResults.text = "True Answer!"
                 txtGuess.backgroundColor = UIColor.systemGreen
-                
+                isAnswerTrue = true
                 btnReset.isHidden = false
                 
             } else if numGuess < targetNumber {
@@ -126,6 +128,11 @@ class ViewController: UIViewController {
         }
         
         imgGuess.isHidden = false
+        print(guessTry)
+        if guessTry == 6 {
+            btnReset.isHidden = false
+            lblResults.text = "Game Over!"
+        }
         
     }
     
@@ -133,6 +140,8 @@ class ViewController: UIViewController {
     
     
     @IBAction func btnResetClicked(_ sender: UIButton) {
+        
+        //everything in down for reset game session
         
         stars[0].image = UIImage(named: "star")
         stars[1].image = UIImage(named: "star")
@@ -159,6 +168,7 @@ class ViewController: UIViewController {
         
         guessTry = 1
         
+        isAnswerTrue = false
     }
     
     
