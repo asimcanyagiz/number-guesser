@@ -31,12 +31,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblResults: UILabel!
     
     
+    @IBOutlet weak var btnReset: UIButton!
+    
     
     var stars : [UIImageView] = [UIImageView]()
     
     let maxTry : Int = 5
     var targetNumber : Int = -1
-    var guessNumber : Int = -1
+    var guessTry : Int = 1
     var isAnswerTrue : Bool = false
     
     
@@ -56,6 +58,8 @@ class ViewController: UIViewController {
         txtNumber.isSecureTextEntry = true
         
         lblResults.text = ""
+        
+        btnReset.isHidden = true
         
     }
     
@@ -83,23 +87,49 @@ class ViewController: UIViewController {
     
     @IBAction func btnGuessClicked(_ sender: UIButton) {
         
-        if let numGuess = Int(txtGuess.text!){
-            if targetNumber == numGuess {
-                imgGuess.image = UIImage(named: "star")
-            } else if numGuess < targetNumber {
-                imgGuess.image = UIImage(named: "up")
-            } else if numGuess > targetNumber {
-                imgGuess.image = UIImage(named: "down")
-            }
+        if isAnswerTrue == true || guessTry > maxTry {
+            return
         }
+        txtGuess.backgroundColor = UIColor.white
+        
+        if let numGuess = Int(txtGuess.text!){
+            guessTry += 1
+            
+            if targetNumber == numGuess {
+                
+                imgGuess.image = UIImage(named: "star")
+                lblResults.text = "True Answer!"
+                txtGuess.backgroundColor = UIColor.systemGreen
+                
+            } else if numGuess < targetNumber {
+                
+                imgGuess.image = UIImage(named: "up")
+                stars[guessTry - 2].image = UIImage(named: "emptyStar")
+                txtGuess.backgroundColor = UIColor.systemRed
+                
+            } else if numGuess > targetNumber {
+                
+                imgGuess.image = UIImage(named: "down")
+                stars[guessTry - 2].image = UIImage(named: "emptyStar")
+                txtGuess.backgroundColor = UIColor.systemRed
+                
+            }
+            
+        } else {
+            
+            imgGuess.image = UIImage(named: "wrong")
+            
+        }
+        
         imgGuess.isHidden = false
-        print("Clicked a lot")
         
     }
     
     
     
     
+    @IBAction func btnResetClicked(_ sender: UIButton) {
+    }
     
     
     
