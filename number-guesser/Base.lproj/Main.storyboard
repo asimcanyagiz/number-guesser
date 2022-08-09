@@ -89,7 +89,7 @@
                                 <rect key="frame" x="268" y="598" width="55" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkK-ZM-s5M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UkK-ZM-s5M">
                                 <rect key="frame" x="53" y="664" width="270" height="115"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
@@ -116,6 +116,20 @@
                                     <action selector="btnGuessClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rPZ-bh-tLt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esX-ol-VGo">
+                                <rect key="frame" x="129" y="461" width="118" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="RESET" cornerStyle="capsule">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="16"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="btnGuessClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7H6-f1-YCE"/>
+                                    <action selector="btnResetClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p3K-yG-Isj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.94509803921568625" green="0.98039215686274506" blue="0.93333333333333335" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -123,6 +137,7 @@
                     <connections>
                         <outlet property="btnGuess" destination="SpF-oZ-cGU" id="O7h-7K-BEo"/>
                         <outlet property="btnNumber" destination="Jao-DM-GJg" id="P77-Mi-ciF"/>
+                        <outlet property="btnReset" destination="esX-ol-VGo" id="RlL-pw-dR5"/>
                         <outlet property="imgGuess" destination="T3o-d7-U5a" id="Wbu-BY-9GR"/>
                         <outlet property="imgNumber" destination="S5x-xU-9R2" id="VnA-p8-CdU"/>
                         <outlet property="lblResults" destination="UkK-ZM-s5M" id="EiL-EM-Asb"/>
@@ -143,6 +158,6 @@
     <resources>
         <image name="star" width="48" height="48"/>
         <image name="true" width="48" height="48"/>
-        <image name="up" width="48" height="48"/>
+        <image name="up" width="1024" height="1024"/>
     </resources>
 </document>
