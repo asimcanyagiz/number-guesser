@@ -61,10 +61,27 @@ class ViewController: UIViewController {
     
     
     @IBAction func btnNumberClicked(_ sender: UIButton) {
-    }
-    @IBAction func btnGuessClicked(_ sender: UIButton) {
         
-        print("Clicked a lot")
+        
+        if let num = Int(txtNumber.text!){
+            
+            targetNumber = num
+            btnGuess.isEnabled = true
+            btnNumber.isEnabled = false
+            txtNumber.text = ""
+            
+        } else {
+            
+            imgNumber.image = UIImage(named: "wrong")
+            
+        }
+        
+        imgNumber.isHidden = false
+        
+    }
+    
+    
+    @IBAction func btnGuessClicked(_ sender: UIButton) {
     }
     
     
