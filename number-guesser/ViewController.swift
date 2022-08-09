@@ -82,6 +82,19 @@ class ViewController: UIViewController {
     
     
     @IBAction func btnGuessClicked(_ sender: UIButton) {
+        
+        if let numGuess = Int(txtGuess.text!){
+            if targetNumber == numGuess {
+                imgGuess.image = UIImage(named: "star")
+            } else if numGuess < targetNumber {
+                imgGuess.image = UIImage(named: "up")
+            } else if numGuess > targetNumber {
+                imgGuess.image = UIImage(named: "down")
+            }
+        }
+        imgGuess.isHidden = false
+        print("Clicked a lot")
+        
     }
     
     
