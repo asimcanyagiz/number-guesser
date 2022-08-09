@@ -30,16 +30,41 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var lblResults: UILabel!
     
+    
+    
+    var stars : [UIImageView] = [UIImageView]()
+    
+    let maxTry : Int = 5
+    var targetNumber : Int = -1
+    var guessNumber : Int = -1
+    var isAnswerTrue : Bool = false
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        stars = [star1,star2,star3,star4,star5]
+        imgNumber.isHidden = true
+        imgGuess.isHidden = true
+        
+        btnGuess.isEnabled = false
+        
+        txtNumber.isSecureTextEntry = true
+        
+        lblResults.text = ""
+        
     }
     
     
     @IBAction func btnNumberClicked(_ sender: UIButton) {
     }
     @IBAction func btnGuessClicked(_ sender: UIButton) {
+        
+        print("Clicked a lot")
     }
     
     
