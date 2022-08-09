@@ -88,12 +88,12 @@ class ViewController: UIViewController {
     @IBAction func btnGuessClicked(_ sender: UIButton) {
         
         if isAnswerTrue == true || guessTry > maxTry {
+            btnReset.isHidden = false
             return
         }
         txtGuess.backgroundColor = UIColor.white
         
         if let numGuess = Int(txtGuess.text!){
-            guessTry += 1
             
             if targetNumber == numGuess {
                 
@@ -101,14 +101,18 @@ class ViewController: UIViewController {
                 lblResults.text = "True Answer!"
                 txtGuess.backgroundColor = UIColor.systemGreen
                 
+                btnReset.isHidden = false
+                
             } else if numGuess < targetNumber {
                 
+                guessTry += 1
                 imgGuess.image = UIImage(named: "up")
                 stars[guessTry - 2].image = UIImage(named: "emptyStar")
                 txtGuess.backgroundColor = UIColor.systemRed
                 
             } else if numGuess > targetNumber {
                 
+                guessTry += 1
                 imgGuess.image = UIImage(named: "down")
                 stars[guessTry - 2].image = UIImage(named: "emptyStar")
                 txtGuess.backgroundColor = UIColor.systemRed
@@ -129,6 +133,32 @@ class ViewController: UIViewController {
     
     
     @IBAction func btnResetClicked(_ sender: UIButton) {
+        
+        stars[0].image = UIImage(named: "star")
+        stars[1].image = UIImage(named: "star")
+        stars[2].image = UIImage(named: "star")
+        stars[3].image = UIImage(named: "star")
+        stars[4].image = UIImage(named: "star")
+        
+        imgNumber.isHidden = true
+        imgGuess.isHidden = true
+        
+        btnGuess.isEnabled = false
+        btnNumber.isEnabled = true
+        
+        txtNumber.isSecureTextEntry = true
+        
+        lblResults.text = ""
+        
+        btnReset.isHidden = true
+        
+        
+        targetNumber = -1
+        txtGuess.backgroundColor = UIColor.white
+        txtGuess.text = ""
+        
+        guessTry = 1
+        
     }
     
     
