@@ -110,6 +110,11 @@ class ViewController: UIViewController {
                 isAnswerTrue = true
                 btnReset.isHidden = false
                 
+                let alertController = UIAlertController(title: "SUCCESS!", message: "Numbers are matched! You won!", preferredStyle: UIAlertController.Style.alert)
+                let okAlert = UIAlertAction(title: "Alright", style: UIAlertAction.Style.default, handler: nil)
+                alertController.addAction(okAlert)
+                present(alertController, animated: true, completion: nil)
+                
             } else if numGuess < targetNumber {
                 
                 guessTry += 1
@@ -129,6 +134,12 @@ class ViewController: UIViewController {
         } else {
             
             imgGuess.image = UIImage(named: "wrong")
+            
+            let alertController = UIAlertController(title: "ERROR!", message: "You can only write numbers", preferredStyle: UIAlertController.Style.alert)
+            let okAlert = UIAlertAction(title: "Alright", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAlert)
+            present(alertController, animated: true, completion: nil)
+            
             
         }
         
