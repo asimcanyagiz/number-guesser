@@ -73,6 +73,7 @@ class ViewController: UIViewController {
             btnGuess.isEnabled = true
             btnNumber.isEnabled = false
             txtNumber.text = ""
+            imgNumber.image = UIImage(named: "true")
             
         } else {
             
@@ -148,6 +149,42 @@ class ViewController: UIViewController {
         if guessTry == 6 {
             btnReset.isHidden = false
             lblResults.text = "Game Over!"
+            
+            let alertController = UIAlertController(title: "GAME OVER!", message: "You're out of life. Answer is : \(targetNumber)", preferredStyle: UIAlertController.Style.alert)
+            let okAlert = UIAlertAction(title: "Alright", style: UIAlertAction.Style.default, handler: nil)
+            let playAgainAlert = UIAlertAction(title: "Play Again", style: UIAlertAction.Style.default) {
+                (action : UIAlertAction)
+                in
+                self.stars[0].image = UIImage(named: "star")
+                self.stars[1].image = UIImage(named: "star")
+                self.stars[2].image = UIImage(named: "star")
+                self.stars[3].image = UIImage(named: "star")
+                self.stars[4].image = UIImage(named: "star")
+                
+                self.imgNumber.isHidden = true
+                self.imgGuess.isHidden = true
+                
+                self.btnGuess.isEnabled = false
+                self.btnNumber.isEnabled = true
+                
+                self.txtNumber.isSecureTextEntry = true
+                self.txtNumber.text = ""
+                self.lblResults.text = ""
+                
+                self.btnReset.isHidden = true
+                
+                
+                self.targetNumber = -1
+                self.txtGuess.backgroundColor = UIColor.white
+                self.txtGuess.text = ""
+                
+                self.guessTry = 1
+                
+                self.isAnswerTrue = false
+            }
+            alertController.addAction(okAlert)
+            alertController.addAction(playAgainAlert)
+            present(alertController, animated: true, completion: nil)
         }
         
     }
@@ -172,7 +209,7 @@ class ViewController: UIViewController {
         btnNumber.isEnabled = true
         
         txtNumber.isSecureTextEntry = true
-        
+        txtNumber.text = ""
         lblResults.text = ""
         
         btnReset.isHidden = true
