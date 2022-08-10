@@ -78,6 +78,11 @@ class ViewController: UIViewController {
             
             imgNumber.image = UIImage(named: "wrong")
             
+            let alertController = UIAlertController(title: "ERROR!", message: "You can only write numbers", preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "Alright", style: UIAlertAction.Style.default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+            
         }
         
         imgNumber.isHidden = false
